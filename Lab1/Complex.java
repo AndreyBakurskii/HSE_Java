@@ -1,5 +1,5 @@
 public class Complex {
-    double real, image;
+    double real, image;    //надо сделать приватными
 
     public Complex() {
         this.real = 0;
@@ -16,7 +16,7 @@ public class Complex {
         this.image = 0;
     }
 
-    public static Complex sum(Complex first_num, Complex second_num) {
+    public static Complex sum(Complex first_num, Complex second_num) {     //методы не должны быть статическими
         return new Complex(first_num.real + second_num.real, first_num.image + second_num.image);
     }
 
