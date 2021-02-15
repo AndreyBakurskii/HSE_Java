@@ -1,7 +1,14 @@
 public class Matrix {
-    int size;
-    Complex[][] matrix;
+    private int size;
+    private Complex[][] matrix;
 
+    public int getSize() {
+        return size;
+    }
+
+    public Complex[][] getMatrix() {
+        return matrix;
+    }
 
     public Matrix(int size) {
         this.size = size;
@@ -36,56 +43,64 @@ public class Matrix {
         }
     }
 
-    public static Matrix sum(Matrix a, Matrix b) {
-        if (!a.isCorrect(b.size)) return null;
+    public Matrix sum(Matrix b) {
+        if (!this.isCorrect(b.getSize())) return null;
 
-        Matrix new_Matrix = new Matrix(a.size);
-        for (int i = 0; i < new_Matrix.size; i++) {
-            for (int j = 0; j < new_Matrix.size; j++) {
-                new_Matrix.matrix[i][j] = a.matrix[i][j].sum(b.matrix[i][j]);
+        Complex[][] data = new Complex[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                data[i][j] = matrix[i][j].sum(b.matrix[i][j]);
             }
         }
+        Matrix new_Matrix = new Matrix(size);
+        new_Matrix.setMatrix(data);
         return new_Matrix;
     }
 
-    public static Matrix sub(Matrix a, Matrix b) {
-        if (!a.isCorrect(b.size)) return null;
+    public Matrix sub(Matrix b) {
+        if (!this.isCorrect(b.getSize())) return null;
 
-        Matrix new_Matrix = new Matrix(a.size);
-        for (int i = 0; i < new_Matrix.size; i++) {
-            for (int j = 0; j < new_Matrix.size; j++) {
-                new_Matrix.matrix[i][j] = a.matrix[i][j].sub(b.matrix[i][j]);
+        Complex[][] data = new Complex[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                data[i][j] = matrix[i][j].sub(b.matrix[i][j]);
             }
         }
+        Matrix new_Matrix = new Matrix(size);
+        new_Matrix.setMatrix(data);
         return new_Matrix;
     }
 
-    public static Matrix mul(Matrix a, Matrix b){
-        if (!a.isCorrect(b.size)) return null;
+    public Matrix mul(Matrix b){
+        if (!this.isCorrect(b.getSize())) return null;
 
-        Matrix new_Matrix = new Matrix(a.size);
 
-        for (int i = 0; i < new_Matrix.size; i++) {
-            for (int j = 0; j < new_Matrix.size; j++) {
+        Complex[][] data = new Complex[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 Complex elem_ij = new Complex();
-                for (int k = 0; k < new_Matrix.size; k++){
-                    elem_ij = elem_ij.sum(a.matrix[i][k].mul(b.matrix[k][j]));
+                for (int k = 0; k < size; k++){
+                    elem_ij = elem_ij.sum(matrix[i][k].mul(b.matrix[k][j]));
                 }
-                new_Matrix.matrix[i][j] = elem_ij;
+                data[i][j] = elem_ij;
             }
         }
+        Matrix new_Matrix = new Matrix(size);
+        new_Matrix.setMatrix(data);
         return new_Matrix;
     }
 
-    public static Matrix transponse(Matrix a){
-        Matrix new_Matrix = new Matrix(a.size);
+    public Matrix transponse(){
 
-        for (int i = 0; i < new_Matrix.size; i++) {
-            for (int j = 0; j < new_Matrix.size; j++){
-                new_Matrix.matrix[i][j] = a.matrix[j][i];
+        Complex[][] data = new Complex[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++){
+                data[i][j] = matrix[j][i];
             }
         }
 
+        Matrix new_Matrix = new Matrix(size);
+        new_Matrix.setMatrix(data);
         return new_Matrix;
     }
 }

@@ -35,13 +35,13 @@ public class Main {
 //        matrix_b.print();
 
         // arithmetic operations on complex numbers
-        Matrix sum = Matrix.sum(matrix_a, matrix_b);
+        Matrix sum = matrix_a.sum(matrix_b);
 //        sum.print();
-        Matrix sub = Matrix.sub(matrix_a, matrix_b);
+        Matrix sub = matrix_a.sub(matrix_b);
 //        sub.print();
-        Matrix mul = Matrix.mul(matrix_a, matrix_b);
+        Matrix mul = matrix_a.mul(matrix_b);
 //        mul.print();
-        Matrix trans = Matrix.transponse(matrix_a);
+        Matrix trans = matrix_a.transponse();
 //        trans.print();
 
 
