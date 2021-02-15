@@ -1,5 +1,13 @@
 public class Complex {
-    double real, image;
+    private double real, image;
+
+    public double getReal() {
+        return real;
+    }
+
+    public double getImage() {
+        return image;
+    }
 
     public Complex() {
         this.real = 0;
@@ -16,29 +24,29 @@ public class Complex {
         this.image = 0;
     }
 
-    public static Complex sum(Complex first_num, Complex second_num) {
-        return new Complex(first_num.real + second_num.real, first_num.image + second_num.image);
+    public Complex sum(Complex second_num) {
+        return new Complex(this.real + second_num.getReal(), this.image + second_num.getImage());
     }
 
-    public static Complex sub(Complex first_num, Complex second_num) {
-        return new Complex(first_num.real - second_num.real, first_num.image - second_num.image);
+    public Complex sub(Complex second_num) {
+        return new Complex(this.real - second_num.getReal(), this.image - second_num.getImage());
     }
 
-    public static Complex mul(Complex first_num, Complex second_num) {
-        return new Complex(first_num.real * second_num.real - first_num.image * second_num.image,
-                first_num.image * second_num.real + first_num.real * second_num.image);
+    public Complex mul(Complex second_num) {
+        return new Complex(this.real * second_num.getReal() - this.image * second_num.getImage(),
+                this.image * second_num.getReal() + this.real * second_num.getImage());
     }
 
-    public static Complex div(Complex first_num, Complex second_num) {
-        return new Complex((first_num.real * second_num.real + first_num.image * second_num.image) /
-                                   (second_num.real * second_num.real + second_num.image * second_num.image),
-                          (first_num.image * second_num.real - first_num.real * second_num.image) /
-                                   (second_num.real * second_num.real + second_num.image * second_num.image));
+    public Complex div(Complex second_num) {
+        return new Complex((this.real * second_num.getReal() + this.image * second_num.getImage()) /
+                                   (second_num.getReal() * second_num.getReal() + second_num.getImage() * second_num.getImage()),
+                          (this.image * second_num.getReal() - this.real * second_num.getImage()) /
+                                   (second_num.getReal() * second_num.getReal() + second_num.getImage() * second_num.getImage()));
     }
 
-    public static String getTrigonometric(Complex num) {
-        double r = Math.sqrt(num.real * num.real + num.image * num.image);
-        double f = Math.atan(num.image / num.real);
+    public String getTrigonometric() {
+        double r = Math.sqrt(this.real * this.real + this.image * this.image);
+        double f = Math.atan(this.image / this.real);
 
         return String.format("%.2f * (cos%.2f + i * sin%.2f)", r, f, f);
     }

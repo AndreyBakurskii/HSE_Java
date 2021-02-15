@@ -31,7 +31,7 @@ public class Matrix {
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                matrix[i][j] = new Complex(new_matrix[i][j].real, new_matrix[i][j].image);
+                matrix[i][j] = new Complex(new_matrix[i][j].getReal(), new_matrix[i][j].getImage());
             }
         }
     }
@@ -42,7 +42,7 @@ public class Matrix {
         Matrix new_Matrix = new Matrix(a.size);
         for (int i = 0; i < new_Matrix.size; i++) {
             for (int j = 0; j < new_Matrix.size; j++) {
-                new_Matrix.matrix[i][j] = Complex.sum(a.matrix[i][j], b.matrix[i][j]);
+                new_Matrix.matrix[i][j] = a.matrix[i][j].sum(b.matrix[i][j]);
             }
         }
         return new_Matrix;
@@ -54,7 +54,7 @@ public class Matrix {
         Matrix new_Matrix = new Matrix(a.size);
         for (int i = 0; i < new_Matrix.size; i++) {
             for (int j = 0; j < new_Matrix.size; j++) {
-                new_Matrix.matrix[i][j] = Complex.sub(a.matrix[i][j], b.matrix[i][j]);
+                new_Matrix.matrix[i][j] = a.matrix[i][j].sub(b.matrix[i][j]);
             }
         }
         return new_Matrix;
@@ -69,7 +69,7 @@ public class Matrix {
             for (int j = 0; j < new_Matrix.size; j++) {
                 Complex elem_ij = new Complex();
                 for (int k = 0; k < new_Matrix.size; k++){
-                    elem_ij = Complex.sum(elem_ij, Complex.mul(a.matrix[i][k], b.matrix[k][j]));
+                    elem_ij = elem_ij.sum(a.matrix[i][k].mul(b.matrix[k][j]));
                 }
                 new_Matrix.matrix[i][j] = elem_ij;
             }

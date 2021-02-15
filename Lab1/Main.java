@@ -7,7 +7,7 @@ public class Main {
         Complex y = new Complex(3.0, 4.0);
 
         // arithmetic operations on complex numbers
-        System.out.println(Complex.sub(x, y));  // 9.0 + (-1.0i)
+        System.out.println(x.sub(y));  // 9.0 + (-1.0i)
 //        Complex.sum(x, y).print();  // 15.0 + (7.0i)
 //        Complex.mul(x, y).print();  // 24.0 + (57.0i)
 //        Complex.div(x, y).print();  // 1.92 + (-1.56i)
